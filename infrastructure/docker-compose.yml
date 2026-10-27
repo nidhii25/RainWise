@@ -1,0 +1,20 @@
+﻿services:
+  db:
+    image: postgis/postgis:16-3.4
+    container_name: rainwise-db
+    environment:
+      POSTGRES_DB: rainwise
+      POSTGRES_USER: rainwise
+      POSTGRES_PASSWORD: rainwise_dev_only
+    ports:
+      - "5432:5432"
+    volumes:
+      - rainwise_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U rainwise -d rainwise"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  rainwise_postgres_data:

@@ -1,0 +1,53 @@
+version: 1
+
+# Runoff coefficients by roof material.
+#
+# status: verified  = the value was read directly from the cited source
+# status: pending   = the value is inside the cited range but the exact row
+#                     still needs to be transcribed before production use
+#
+# The engine emits a warning whenever it falls back to the "other" row.
+
+sources:
+  cpwd:
+    title: "Rain Water Harvesting"
+    publisher: "Central Public Works Department (CPWD), Government of India"
+    locator: "Table 2 - Runoff Co-efficient of Various Surfaces"
+    url: "https://www.cpwd.gov.in/Publication/rain_wh.pdf"
+    status: verified
+  is15797:
+    title: "IS 15797:2008 - Roof Top Rainwater Harvesting: Guidelines"
+    publisher: "Bureau of Indian Standards"
+    year: 2008
+    locator: "Runoff coefficient range 0.8 to 0.95"
+    url: "https://www.icid.org/rfwaterharvesting_guidelines.pdf"
+    status: verified
+
+default: other
+
+coefficients:
+  tiles:
+    value: 0.85
+    source: cpwd
+    status: verified
+    note: "Clay or concrete tiles. CPWD Table 2."
+  concrete:
+    value: 0.85
+    source: is15797
+    status: pending
+    note: "Inside the IS 15797 range 0.8-0.95. Confirm the CPWD row for concrete."
+  metal:
+    value: 0.90
+    source: is15797
+    status: pending
+    note: "Corrugated metal or GI sheet. Inside the IS 15797 range."
+  asbestos:
+    value: 0.80
+    source: is15797
+    status: pending
+    note: "Lower bound of the IS 15797 range."
+  other:
+    value: 0.80
+    source: is15797
+    status: pending
+    note: "Conservative fallback for an unknown material. A warning is emitted."

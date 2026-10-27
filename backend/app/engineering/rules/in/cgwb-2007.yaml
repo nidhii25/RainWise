@@ -1,0 +1,91 @@
+version: 1
+region: IN
+name: "India - CGWB artificial recharge principles"
+
+# These criteria are transcribed from CGWB guidance and, where marked
+# "assumption", chosen by the project team. They are not a professional
+# approval. Every criterion is evaluated and reported individually.
+
+sources:
+  cgwb2007:
+    title: "Manual on Artificial Recharge of Ground Water"
+    publisher: "Central Ground Water Board, Ministry of Jal Shakti, Government of India"
+    year: 2007
+    locator: "Table 5.3; Chapter 6 - site selection and design guidelines"
+    url: "https://cgwa.mowr.gov.in/Documents/Manual-Artificial-Recharge.pdf"
+    status: verified
+  cgwb_faq:
+    title: "Frequently Asked Questions - Artificial Recharge"
+    publisher: "Central Ground Water Board"
+    year: 2025
+    locator: "Structure depth must stop 3-5 m above the water table"
+    url: "https://cgwb.gov.in/sites/default/files/2025-02/faq_artificialrecharge_final_forwebsite_english.pdf"
+    status: verified
+  project:
+    title: "RainWise project assumption"
+    publisher: "RainWise project team"
+    locator: "docs/DESIGN_RULES.md"
+    status: assumption
+
+criteria:
+  - id: infiltration_measured
+    label: "Measured infiltration rate"
+    input: infiltration_mm_per_hr
+    operator: present
+    on_unknown: insufficient
+    source: cgwb2007
+    message: "Run a soak pit or double-ring infiltrometer test and record the rate in mm/h."
+
+  - id: water_table_depth
+    label: "Depth to water table"
+    input: water_table_depth_m
+    operator: gte
+    threshold: 3.0
+    unit: m
+    on_unknown: insufficient
+    source: cgwb_faq
+    message: "Record the observed depth to the water table and the date it was observed."
+
+  - id: contamination_setback
+    label: "Distance to a contamination source"
+    input: contamination_distance_m
+    operator: gte
+    threshold: 15.0
+    unit: m
+    on_unknown: review
+    source: project
+    message: "Confirm the distance to the nearest septic tank, soak pit, drain, or landfill."
+
+  - id: available_space
+    label: "Free space for a recharge structure"
+    input: available_space_m2
+    operator: gte
+    threshold: 4.0
+    unit: m2
+    on_unknown: insufficient
+    source: project
+    message: "Measure the free, unpaved area available for the structure."
+
+  - id: slope
+    label: "Ground slope"
+    input: slope_pct
+    operator: lte
+    threshold: 15.0
+    unit: "%"
+    on_unknown: review
+    source: project
+    message: "Record the ground slope; steep sites need a professional layout review."
+
+design:
+  intensity_mm_per_hr: 50.0
+  duration_h: 1.0
+  void_ratio_pit: 0.40
+  void_ratio_trench: 0.40
+  void_ratio_shaft: 1.00
+  water_table_clearance_m: 3.0
+  percolation_safety_factor: 1.5
+  pit_threshold_mm_per_hr: 15.0
+  trench_threshold_mm_per_hr: 10.0
+  max_pit_depth_m: 3.0
+  max_trench_depth_m: 2.5
+  max_shaft_depth_m: 10.0
