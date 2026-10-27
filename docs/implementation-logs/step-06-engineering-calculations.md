@@ -26,7 +26,7 @@ Turn a validated roof/rainfall/demand snapshot into a transparent runoff result 
 
 ## Decisions and limitations
 
-- **Coefficient rows are partly pending.** Tiles = 0.85 is verified from CPWD Table 2. Concrete, metal, and asbestos sit inside the IS 15797 range of 0.8–0.95 but their exact CPWD rows still need transcription. Each row carries `status: verified|pending`, and the engine emits a warning for pending rows.
+- **Coefficient rows are partly pending.** Tiles = 0.85 is verified from CPWD's worked example. CPWD Table 2 (p. 14) gives ranges: concrete 0.70–0.95 and corrugated metal 0.70–0.90. The selected single values for concrete, metal, asbestos, and other remain `pending` because CPWD does not state those exact values; asbestos and the fallback use IS 15797 clause 5.1 (p. 2) range 0.80–0.95. The engine emits a warning for pending rows. The full source/page register is in `docs/ENGINEERING_METHODOLOGY.md` §3.
 - **First flush is modelled as 1 mm per month** when only annual rainfall is available, and as 1 mm per event-month when a monthly series exists. This is a simplification; event-level data would be better.
 - **Filter loss is 5%** of the runoff after first flush. Configurable, labelled as a project assumption.
 - **The balance runs a two-year warm-up** before scoring, so the result does not depend on the tank starting empty in January.
@@ -46,5 +46,5 @@ Turn a validated roof/rainfall/demand snapshot into a transparent runoff result 
 
 ## Follow-up
 
-- Transcribe the remaining CPWD coefficient rows and flip their status to `verified`.
+- Confirm the selected concrete, metal, asbestos, and fallback coefficient values with a qualified reviewer. Do not flip them to `verified` without that review; the ranges are transcribed, but the single values are RainWise selections.
 - Filter the tank catalogue by available space.

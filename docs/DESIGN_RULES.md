@@ -349,7 +349,7 @@ Lengths are computed from the roof geometry and the chosen positions, not typed 
 
 | Parameter | Default | Status |
 | --- | --- | --- |
-| Runoff coefficient | Per material table | CPWD Table 2, IS 15797 |
+| Runoff coefficient | Per material table | CPWD Table 2, p. 14; IS 15797:2008 §5.1, p. 2. Tiles 0.85 is verified; concrete, metal, asbestos, and other are pending review (see methodology §3). |
 | First flush | 1 mm | Common practice |
 | Filter loss | 5% of runoff | Project assumption, configurable |
 | Household demand | 4 people × 100 L/day | Project assumption, editable |
@@ -358,11 +358,13 @@ Lengths are computed from the roof geometry and the chosen positions, not typed 
 | Dead storage | 0.10 m | Practice |
 | Design intensity | 50 mm/h for 1 h | Project assumption |
 | Pit void ratio | 0.40 | Media-filled masonry |
-| Water-table clearance | 3 m | CGWB guidance |
+| Water-table clearance | 3 m | CGWB FAQ (2025), PDF pp. 17–18 and 23; the FAQ gives 3–5 m, RainWise uses the minimum 3 m |
 | Contamination setback | 15 m | Project assumption, check local rules |
 | Percolation safety factor | 1.5 | Practice |
 | Minimum tank size | 0.5 m³ | Catalogue |
 | Maximum practical tank | 50 m³ | Beyond this, multi-cell or reconsider |
+
+The full source register, page references, formulas, and worked examples are in `docs/ENGINEERING_METHODOLOGY.md`. The design defaults above that are not direct transcriptions are labelled project assumptions there; they are not CGWB values.
 
 ---
 

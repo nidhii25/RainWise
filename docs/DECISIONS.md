@@ -51,7 +51,7 @@ This update supersedes the organization/membership model implied by the original
 | --- | --- | --- |
 | Survey rules | Which fields in the A-J survey are required/optional, what units/validation apply, and which missing inputs block each calculation? | Open |
 | Rainfall cross-check | NASA POWER is the default global source. Is a local station cross-check required for India? | Open |
-| Coefficient table | Transcribe CPWD Table 2 and the IS 15797 range into the versioned rule file? | Partially done: tiles verified; concrete/metal/asbestos pending |
+| Coefficient table | Transcribe CPWD Table 2 and the IS 15797 range into the versioned rule file? | Ranges transcribed with page numbers. Tiles 0.85 is verified from CPWD's worked example; concrete/metal/asbestos/other remain `pending` by design because CPWD gives ranges, not exact single rows. See `docs/ENGINEERING_METHODOLOGY.md` §3. |
 | Recharge rule pack | Confirm CGWB 2007 Table 5.3 as the India pack, with other regions returning `REVIEW_REQUIRED`? | India pack implemented; other regions return `REVIEW_REQUIRED` |
 | Infiltration input | Require a measured infiltration test, or allow a texture-based estimate that is clearly labelled as an estimate? | Measured infiltration is used; missing values return `INSUFFICIENT_DATA`. Texture-based estimates are deferred |
 | Design event | Which return period and duration should drive recharge structure sizing? | Resolved for the MVP: 50 mm/h for 1 hour, stored in the rule file |

@@ -100,6 +100,7 @@ Known operational limits: tokens are kept in `localStorage`, rate limiting is pe
 - [Decisions](docs/DECISIONS.md)
 - [Data sources](docs/DATA_SOURCES.md)
 - [Design rules](docs/DESIGN_RULES.md)
+- [Engineering methodology and worked examples](docs/ENGINEERING_METHODOLOGY.md)
 - [User flow](docs/USER_FLOW.md)
 - [Implementation logs](docs/implementation-logs/README.md)
 - [Original developer handoff](RainWise_Project_Plan_and_Developer_Handoff.md)

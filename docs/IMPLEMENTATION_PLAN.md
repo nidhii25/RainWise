@@ -311,13 +311,13 @@ A single `design_option_id` drives the drawing, the 3D model, the AI prompt, and
 
 ### Step 0 — Lock the methods, sources, and visual decisions
 
-**Status:** Complete — decisions, data sources, design rules, and user flow recorded; full CPWD/CGWB transcription remains partial.
+**Status:** Complete for the implemented methods — decisions, data sources, design rules, user flow, and the methodology document are written. CPWD Table 2 and CGWB Table 5.3 are transcribed with page numbers. Selected single coefficient values remain `pending` by design because CPWD gives ranges, not exact rows; independent engineering review remains open.
 
 **Work**
 - [x] ~~Confirm the image provider: Google Gemini.~~
 - [x] ~~Confirm the app is not limited to one geography: global open data plus region-keyed rule packs.~~
 - [x] ~~Write `docs/DATA_SOURCES.md` with the sources in §6.7, the exact parameter and endpoint used, and the licence or citation.~~
-- [ ] Write `docs/ENGINEERING_METHODOLOGY.md`: transcribe the CPWD coefficient table and CGWB Table 5.3 with page numbers, and add a worked example for every method.
+- [x] ~~Write `docs/ENGINEERING_METHODOLOGY.md`: transcribe the CPWD coefficient table and CGWB Table 5.3 with page numbers, and add a worked example for every method.~~
 - [x] ~~Fix the feasibility vocabulary and the exact rule-table schema.~~
 - [x] ~~Choose the design-event rainfall basis and record it as a configurable parameter.~~
 - [x] ~~Record that no engineering advisor is available, so every method ships marked unverified and every result is labelled preliminary.~~
@@ -509,15 +509,15 @@ The status line on each step is the current truth. Completed checkboxes are stru
 - Region routing: India (CGWB 2007) is the only recharge pack; other regions return `REVIEW_REQUIRED` while yield and tank sizing still run.
 - 55 backend tests and Playwright checks for the full UI flow and the 3D viewer.
 
-Deferred or blocked: PostgreSQL/PostGIS (Docker daemon unavailable), recharge rule packs outside India (other regions return `REVIEW_REQUIRED`), automatic NASA POWER/SoilGrids lookup, email verification and email delivery, MapLibre and polygon drawing, photo upload and autosave, SVG drawings and server-side PDF, 3D snapshot storage, a Gemini job queue/quota, deployment, a formatter/Vitest/CI/backend lockfile, and a full CPWD/CGWB transcription with page numbers. See `docs/DECISIONS.md` and the implementation logs for the reasoning.
+Deferred or blocked: PostgreSQL/PostGIS (Docker daemon unavailable), recharge rule packs outside India (other regions return `REVIEW_REQUIRED`), automatic NASA POWER/SoilGrids lookup, email verification and email delivery, MapLibre and polygon drawing, photo upload and autosave, SVG drawings and server-side PDF, 3D snapshot storage, a Gemini job queue/quota, deployment, a formatter/Vitest/CI/backend lockfile, and independent professional review of the selected coefficient values. The CPWD Table 2 and CGWB Table 5.3/§6.2.3.3 pages used by the engine are transcribed in `docs/ENGINEERING_METHODOLOGY.md`. See `docs/DECISIONS.md` and the implementation logs for the reasoning.
 
 ### Remaining work at a glance (2026-10-28)
 
 The MVP demo slice is complete: auth, properties, immutable history, yield, tank sizing, the recharge decision, structure sizing, piping, quantities, map, 3D, and a print-ready report. Everything below is an enhancement or hardening item, not a blocker for the demo.
 
 **1. Engineering evidence and review**
-- Transcribe the remaining CPWD Table 2 rows (concrete, metal, asbestos) and the CGWB 2007 Table 5.3 rows with page numbers; change each rule row from `pending` to `verified`.
-- Create `docs/ENGINEERING_METHODOLOGY.md` with a worked example for every method.
+- CPWD Table 2 ranges and CGWB Table 5.3/§6.2.3.3 are transcribed with page numbers. Confirm the selected single coefficient values (concrete, metal, asbestos, other) with a civil/hydrogeology professional; they remain `pending` by design because CPWD gives ranges, not exact rows.
+- Keep `docs/ENGINEERING_METHODOLOGY.md` current with a worked example for every new method.
 - Have the formulas, thresholds, and sample outputs reviewed by a civil/hydrogeology professional.
 - Add water-quality and soil-class criteria to the recharge decision.
 

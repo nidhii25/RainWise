@@ -1,6 +1,6 @@
 # Step 0 - Confirm product and engineering decisions
 
-**Status:** Complete — decisions recorded; full CPWD/CGWB transcription remains partial
+**Status:** Complete — decisions recorded; engineering methodology and source transcription completed for the implemented methods (2026-10-28)
 
 ## Work completed
 
@@ -55,3 +55,13 @@ Recorded in the implementation plan and decision register. No code or access-con
 - **Documents.** `docs/DECISIONS.md`, `docs/DATA_SOURCES.md`, `docs/DESIGN_RULES.md`, `docs/USER_FLOW.md`, and the active `docs/IMPLEMENTATION_PLAN.md`. The old organization/reviewer plan is superseded.
 
 The user's closing scope statement was: "That is all we are going to give. That's all I want." The implementation treats the list above as binding and records anything beyond it as deferred.
+
+## Engineering evidence update (2026-10-28)
+
+- Created `docs/ENGINEERING_METHODOLOGY.md`: source register with page numbers, formulas, status vocabulary, full worked reference example, project-assumption register, piping and quantity basis, limitations, and change control.
+- Transcribed CPWD *Rain Water Harvesting* Table 2 (p. 14): tiles 0.80–0.90, corrugated metal sheets 0.70–0.90, concrete 0.70–0.95. Cross-checked the ranges against the CSE India reproduction of the CPWD table because the CPWD PDF text layer is imperfect.
+- Transcribed IS 15797:2008 clause 5.1 (p. 2): general roof runoff range 0.80–0.95.
+- Transcribed CGWB 2007 Table 5.3 (pp. 48–50) and §6.2.3.3 / §6.2.3.3.1.1 / §6.2.3.3.2.1 (pp. 91–92); recorded the CGWB FAQ 2025 pages for the 3–5 m water-table clearance and the 3 m minimum.
+- Kept the single coefficient values for concrete, metal, asbestos, and other as `pending` by design. CPWD gives ranges, not exact single rows; marking a selected value `verified` would misstate the source. Tiles 0.85 is `verified` because the CPWD manual's own worked example uses it.
+- Labelled every non-transcribed design default as a RainWise project assumption in `cgwb-2007.yaml` and the methodology doc. The 15/10 mm/h thresholds, 4 m² space, 15% slope, 15 m setback, 1.5 safety factor, 50 mm/h design storm, void ratios, and maximum depths are explicitly **not** attributed to CGWB.
+- Updated the `coefficient_pending` warning to say the value is a RainWise design selection inside the cited range, not that the table row is unverified.

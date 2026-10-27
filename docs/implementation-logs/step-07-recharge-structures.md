@@ -50,6 +50,6 @@ Decide whether artificial recharge is possible at a site, explain the decision c
 
 ## Follow-up
 
-- Transcribe CGWB Table 5.3 row by row with page numbers and replace the current principle-level rules.
+- CGWB Table 5.3 has been read and summarised with page numbers in `docs/ENGINEERING_METHODOLOGY.md` §2.1. It is a qualitative suitability matrix, not a numeric threshold table, so the current principle-level rules are not replaced row by row. The 15/10 mm/h thresholds and other design defaults are explicitly labelled project assumptions, not CGWB values.
 - Add water-quality and soil-class criteria.
 - Add a recharge rule pack for regions other than India.

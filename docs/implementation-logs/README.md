@@ -7,6 +7,7 @@ The log numbering follows the active plan. Logs that still describe the withdraw
 ## Current state (2026-10-28)
 
 - Steps 0–9 are implemented for the MVP: decisions and docs, foundation, individual accounts, user-owned data, property register, assessment form, engineering engine, recharge engine, OpenStreetMap location, and the results/3D/AI page.
+- Step 0's engineering evidence is now recorded in `docs/ENGINEERING_METHODOLOGY.md`: CPWD Table 2 ranges and page, IS 15797 clause 5.1, CGWB 2007 Table 5.3 and §6.2.3.3 pages, CGWB FAQ pages, formulas, project assumptions, and a full worked reference example. Selected single coefficient values remain `pending` by design because the source gives ranges, not exact rows.
 - Step 10 is partial: the report is print-ready, but there is no server-side PDF or report history.
 - Step 11 is partial: ownership/validation tests, AI authentication, and rate limiting exist; deployment, accessibility, engineering review, and the runbook remain open.
 - The app runs on SQLite because the Docker daemon is unavailable. PostgreSQL/PostGIS has not been started.

@@ -58,15 +58,18 @@ https://power.larc.nasa.gov/api/temporal/monthly/point
 
 | Field | Value |
 | --- | --- |
-| Primary | CPWD, *Rain Water Harvesting* — Table 2, "Runoff Co-efficient of Various Surfaces" |
+| Primary | CPWD, *Rain Water Harvesting* — Table 2, "Runoff Co-efficient of Various Surfaces", **p. 14** |
 | URL | `https://www.cpwd.gov.in/Publication/rain_wh.pdf` |
-| Verified value | Tiles = 0.85 (Table 2) |
-| Secondary | IS 15797:2008, *Roof Top Rainwater Harvesting — Guidelines*, states a runoff coefficient range of 0.8 to 0.95 |
-| URL | `https://www.icid.org/rfwaterharvesting_guidelines.pdf` |
+| Transcribed ranges | Tiles **0.80–0.90**; corrugated metal sheets **0.70–0.90**; concrete **0.70–0.95**. The CPWD PDF text layer is imperfect; the ranges were cross-checked against the CSE reproduction below. |
+| Cross-check | CSE India, *Technical Design of Rainwater Harvesting* (2016), slide "Runoff Coefficients and RWH potential" — reproduces the CPWD 2002 table |
+| Cross-check URL | `https://cdn.cseindia.org/userfiles/Technical-Design-of-RWH.pdf` |
+| Secondary | IS 15797:2008, *Roof Top Rainwater Harvesting — Guidelines*, **Clause 5.1, p. 2**: runoff coefficient range **0.8 to 0.95** |
+| Secondary URL | `https://www.icid.org/rfwaterharvesting_guidelines.pdf` |
+| Selected values | Tiles **0.85** (CPWD worked example; Table 2, p. 14 gives the range); concrete **0.85**; metal **0.90**; asbestos **0.80**; other **0.80** |
+| Status | Tiles is `verified`. The other single values are `pending`: the range is verified, but the exact value is a RainWise selection that needs professional review. The reproduced CPWD rows show tiles, corrugated metal, and concrete; asbestos is not a separate reproduced row, so its value comes from IS 15797. |
 | Use | Map roof material and condition to a coefficient in a versioned rule file |
-| Action required | Transcribe the full Table 2 into `rules/coefficients/roof.yaml` with a page reference per row |
 
-The coefficient is stored per roof segment, never as a global default.
+The coefficient is stored per roof segment, never as a global default. The full selection discussion and the worked example are in `docs/ENGINEERING_METHODOLOGY.md` §3 and §4.
 
 ---
 
@@ -101,7 +104,7 @@ If the user has no test, the engine returns `INSUFFICIENT_DATA` for percolation-
 | India reference | CGWB / India-WRIS published water-level data, if a usable endpoint is confirmed |
 | Coverage | Site-specific; no reliable free global API |
 | Use | Hard constraint on structure depth, and a feasibility criterion |
-| Rule | A structure must not extend below the local water table. CGWB guidance: stop 3–5 m above the water level. |
+| Rule | A structure must not extend below the local water table. CGWB FAQ (2025), PDF pp. 17–18 and 23: stop 3–5 m above the water level; avoid recharge where the post-monsoon water level is less than 3 m below ground. RainWise applies the minimum 3 m clearance and rejects a site below 3 m. |
 
 If depth is unknown, any result that depends on it is `INSUFFICIENT_DATA`. The app must never assume a deep water table.
 
@@ -117,8 +120,9 @@ If depth is unknown, any result that depends on it is `INSUFFICIENT_DATA`. The a
 | Year | 2007 |
 | URL | `https://cgwa.mowr.gov.in/Documents/Manual-Artificial-Recharge.pdf` |
 | Mirror | `https://cgwb.gov.in/sites/default/files/MainLinks/Manual-Artificial-Recharge.pdf` |
-| Key content | Table 5.3 — suitability of recharge structures by hydrogeological setting; §6.2.3.3 — recharge pits and shafts; chapter 6 — site selection and design guidelines per structure |
+| Key content | **Table 5.3, pp. 48–50** — suitability of recharge structures by hydrogeological setting; **§6.2.3.3, pp. 91–92** — recharge pits and shafts; **§6.2.3.3.1.1, pp. 91–92** — pit site characteristics and design; **§6.2.3.3.2.1, p. 92** — shaft design guidelines |
 | Use | The India rule pack: which structure suits which setting, and the design constraints |
+| Not in the manual | The 15/10 mm/h infiltration thresholds, 4 m² space, 15% slope, 15 m setback, 1.5 safety factor, 50 mm/h design storm, 0.40 void ratios, and maximum depths are RainWise project assumptions. See `docs/ENGINEERING_METHODOLOGY.md` §8. |
 
 ### Supporting: CGWB Guide on Artificial Recharge to Ground Water (2005)
 
@@ -127,9 +131,9 @@ If depth is unknown, any result that depends on it is `INSUFFICIENT_DATA`. The a
 | URL | `https://cgwb.gov.in/cgwbpnm/public/uploads/documents/16861384061006484074file.pdf` |
 | Use | Site-characteristic and design guidance for recharge shafts; cross-check for the 2007 manual |
 
-### Action required
+### Status
 
-Transcribe Table 5.3 into `rules/in/cgwb-2007.yaml` row by row, with the table and page number on every row. Do not paraphrase a threshold. If a row cannot be read unambiguously, it does not go into the file.
+Table 5.3 has been read and summarised in `docs/ENGINEERING_METHODOLOGY.md` §2.1. The app uses it as a qualitative cross-check, not as a row-by-row numerical lookup, because the app does not ask for a geological group. The numeric design defaults are labelled project assumptions and are not attributed to CGWB. If a row cannot be read unambiguously, it is not presented as a threshold.
 
 ---
 

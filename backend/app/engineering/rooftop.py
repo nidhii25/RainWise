@@ -74,8 +74,9 @@ def compute_rooftop(
                 WarningItem(
                     code="coefficient_pending",
                     message=(
-                        f"Coefficient {c} for '{segment.material}' is inside the cited range "
-                        f"but its table row is not yet verified."
+                        f"Coefficient {c} for '{segment.material}' is a RainWise design value "
+                        f"inside the cited range. The exact value is not a direct table entry; "
+                        f"professional review is pending. See docs/ENGINEERING_METHODOLOGY.md."
                     ),
                     severity=Severity.INFO,
                 )

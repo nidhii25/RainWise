@@ -11,20 +11,20 @@ sources:
     title: "Manual on Artificial Recharge of Ground Water"
     publisher: "Central Ground Water Board, Ministry of Jal Shakti, Government of India"
     year: 2007
-    locator: "Table 5.3; Chapter 6 - site selection and design guidelines"
+    locator: "Table 5.3, pp. 48-50; section 6.2.3.3, pp. 91-92; section 6.2.3.3.1.1, pp. 91-92; section 6.2.3.3.2.1, p. 92"
     url: "https://cgwa.mowr.gov.in/Documents/Manual-Artificial-Recharge.pdf"
     status: verified
   cgwb_faq:
     title: "Frequently Asked Questions - Artificial Recharge"
     publisher: "Central Ground Water Board"
     year: 2025
-    locator: "Structure depth must stop 3-5 m above the water table"
+    locator: "PDF pp. 17-18 and 23 - recharge structure 3-5 m above the water table; avoid recharge where the post-monsoon water level is less than 3 m below ground"
     url: "https://cgwb.gov.in/sites/default/files/2025-02/faq_artificialrecharge_final_forwebsite_english.pdf"
     status: verified
   project:
     title: "RainWise project assumption"
     publisher: "RainWise project team"
-    locator: "docs/DESIGN_RULES.md"
+    locator: "docs/DESIGN_RULES.md section 8 and docs/ENGINEERING_METHODOLOGY.md section 8"
     status: assumption
 
 criteria:
@@ -76,6 +76,11 @@ criteria:
     source: project
     message: "Record the ground slope; steep sites need a professional layout review."
 
+# The design defaults below are RainWise project assumptions, NOT CGWB values.
+# CGWB 2007 section 6.2.3.3 describes pit and shaft construction but does not
+# set these numeric thresholds. They are documented in
+# docs/ENGINEERING_METHODOLOGY.md section 8 and must be replaced by local
+# bylaw or site-specific values where available.
 design:
   intensity_mm_per_hr: 50.0
   duration_h: 1.0
